@@ -23,7 +23,7 @@ class AuthorCycleElement extends AuthorElement(HTMLElement) {
 
       hideChild: child => child.removeAttribute('selected', ''),
 
-      beforeChangeCallback: (child, previousSelection) => {
+      beforechangeCallback: (child, previousSelection) => {
         if (this.selectedIndex >= 0) {
           this.PRIVATE.hideChild(this.children.item(this.selectedIndex || 0))
         }
@@ -44,7 +44,7 @@ class AuthorCycleElement extends AuthorElement(HTMLElement) {
 
       showChild: child => {
         let {
-          beforeChangeCallback,
+          beforechangeCallback,
           getNextSelectedChild,
           hideChild
         } = this.PRIVATE
@@ -59,7 +59,7 @@ class AuthorCycleElement extends AuthorElement(HTMLElement) {
             return
           }
 
-          beforeChangeCallback(child, previousSelection)
+          beforechangeCallback(child, previousSelection)
         }
 
         this.addEventListener('beforechange', beforechangeHandler)
@@ -77,7 +77,7 @@ class AuthorCycleElement extends AuthorElement(HTMLElement) {
                 return console.warn(`<${this.localName}> Calling "next()" in "beforechange" event will not do anything unless the event's default behavior is canceled. (use Event.preventDefault())`)
               }
 
-              beforeChangeCallback(child, previousSelection)
+              beforechangeCallback(child, previousSelection)
             }
           }
         })
