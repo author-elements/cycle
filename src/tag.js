@@ -52,8 +52,8 @@ class AuthorCycleElement extends AuthorElement(HTMLElement) {
         let previousSelection = this.selected
         let nextSelection = getNextSelectedChild(child)
 
-        let beforechangeHandler = evt => {
-          this.removeEventListener('beforechange', beforechangeHandler)
+        let handler = evt => {
+          this.off('beforechange', handler)
 
           if (evt.defaultPrevented) {
             return
@@ -62,9 +62,9 @@ class AuthorCycleElement extends AuthorElement(HTMLElement) {
           beforechangeCallback(child, previousSelection)
         }
 
-        this.addEventListener('beforechange', beforechangeHandler)
+        this.on('beforechange', handler)
 
-        let beforechangeEvent = new CustomEvent('beforechange', {
+        let evt = new CustomEvent('beforechange', {
           bubbles: true,
           cancelable: true,
           composed: true,
@@ -82,8 +82,8 @@ class AuthorCycleElement extends AuthorElement(HTMLElement) {
           }
         })
 
-        beforechangeEvent.detail.next = beforechangeEvent.detail.next.bind(beforechangeEvent)
-        this.dispatchEvent(beforechangeEvent)
+        evt.detail.next = evt.detail.next.bind(evt)
+        this.dispatchEvent(evt)
       },
 
       showChildByIndex: index => {
