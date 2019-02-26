@@ -1,6 +1,6 @@
 class AuthorCycleElement extends AuthorElement(HTMLElement) {
   constructor () {
-    super({{TEMPLATE-STRING}})
+    super(`{{TEMPLATE-STRING}}`)
 
     this.UTIL.defineProperties({
       dummyEl: {
@@ -30,7 +30,7 @@ class AuthorCycleElement extends AuthorElement(HTMLElement) {
 
         child.setAttribute('selected', '')
 
-        this.dispatchEvent(new CustomEvent('change', {
+        this.dispatchEvent(this.UTIL.createEvent('change', {
           bubbles: true,
           cancelable: true,
           composed: true,
@@ -64,7 +64,7 @@ class AuthorCycleElement extends AuthorElement(HTMLElement) {
 
         this.on('beforechange', handler)
 
-        let evt = new CustomEvent('beforechange', {
+        let evt = this.UTIL.createEvent('beforechange', {
           bubbles: true,
           cancelable: true,
           composed: true,

@@ -1,8 +1,10 @@
 import buble from 'rollup-plugin-buble'
 import {uglify} from 'rollup-plugin-uglify'
 import {terser} from 'rollup-plugin-terser'
+import wcbuilder from '@author.io/rollup-plugin-wcbuilder'
 
-const input = 'author-cycle.js'
+const input = './src/tag.js'
+const outfile = 'author-cycle.js'
 const outdir = './dist'
 const format = 'iife'
 const pkg = require('./package.json')
@@ -11,7 +13,7 @@ const banner = `// Copyright (c) ${(new Date()).getFullYear()} ${pkg.author.name
 const output = file => {
 	return {
 		name: 'AuthorCycleElement',
-		file: `${outdir}/${input.replace(require('path').extname(input), '')}${file}`,
+		file: `${outdir}/${outfile.replace(require('path').extname(outfile), '')}${file}`,
 		format,
 		banner,
 		sourcemap: true
@@ -23,6 +25,7 @@ export default [
 	{
 		input,
 		plugins: [
+			wcbuilder(),
 			terser()
 		],
 		output: [
@@ -34,6 +37,7 @@ export default [
 	{
 		input,
 		plugins: [
+			wcbuilder(),
 			buble(),
 			uglify()
 		],
@@ -45,7 +49,9 @@ export default [
 	// Development: Standard (Unminified ES6)
 	{
 		input,
-		plugins: [],
+		plugins: [
+			wcbuilder()
+		],
 		output: [
 			output('.js')
 		]
@@ -55,6 +61,7 @@ export default [
 	{
 		input,
 		plugins: [
+			wcbuilder(),
 			buble()
 		],
 		output: [
