@@ -3,7 +3,7 @@ import {uglify} from 'rollup-plugin-uglify'
 import {terser} from 'rollup-plugin-terser'
 import wcbuilder from '@author.io/rollup-plugin-wcbuilder'
 
-const input = './src/tag.js'
+const input = './src/element.js'
 const outfile = 'author-cycle.js'
 const outdir = './dist'
 const format = 'iife'
