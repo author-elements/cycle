@@ -1,4 +1,4 @@
-class AuthorCycleElement extends AuthorElement(HTMLElement) {
+class AuthorCycleElement extends AuthorBaseElement(HTMLElement) {
   constructor () {
     super(`{{TEMPLATE-STRING}}`)
 

@@ -1,6 +1,6 @@
 {
   "name": "@author.io/element-cycle",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "author-cycle custom element (web component).",
   "main": "dist/author-cycle.min.js",
   "scripts": {
