@@ -89,7 +89,7 @@ class AuthorCycleElement extends AuthorBaseElement(HTMLElement) {
         child.setAttribute('selected', '')
 
         this.dispatchEvent(new CustomEvent('change', {
-          bubbles: true,
+          bubbles: false,
           cancelable: true,
           composed: true,
 
@@ -112,7 +112,7 @@ class AuthorCycleElement extends AuthorBaseElement(HTMLElement) {
 
         let beforechange = {
           event: new CustomEvent('beforechange', {
-            bubbles: true,
+            bubbles: false,
             cancelable: true,
             composed: true,
 

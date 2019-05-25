@@ -1,0 +1,1 @@
+- Allow user to specify a "name" attribute on each child element. The `show()` method should be able to accept a name. If there are duplicate names, the component should throw a warning but default to the first instance.
