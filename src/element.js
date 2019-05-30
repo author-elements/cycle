@@ -155,7 +155,7 @@ class AuthorCycleElement extends AuthorBaseElement(HTMLElement) {
       },
 
       showChildBySelector: query => {
-        let nodes = this.querySelectorAll(query)
+        let nodes = [...this.children].filter(child => child.matches(query))
 
         if (!nodes.length) {
           return this.UTIL.printToConsole(`Node matching query "${query}" not found. Aborting...`, 'warning')
@@ -164,8 +164,8 @@ class AuthorCycleElement extends AuthorBaseElement(HTMLElement) {
         if (nodes.length > 1) {
           this.UTIL.printToConsole(`Found multiple nodes matching "${query}". Displaying first result...`, 'warning')
         }
-
-        this.PRIVATE.showChild(nodes.item(0))
+        
+        this.PRIVATE.showChild(nodes[0])
       }
     })
 
